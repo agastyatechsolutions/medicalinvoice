@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_invoice,access_medical_invoice,model_medical_invoice,,1,1,1,1
+access_medical_invoice_line,access_medical_invoice_line,model_medical_invoice_line,,1,1,1,1
+access_hospital_prescription,access_hospital_prescription,model_hospital_prescription,,1,1,1,1
+access_hospital_prescription_line,access_hospital_prescription_line,model_hospital_prescription_line,,1,1,1,1
+access_prescription_import_wizard,access_prescription_import_wizard,model_medical_prescription_import_wizard,,1,1,1,1

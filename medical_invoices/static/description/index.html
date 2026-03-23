@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medical Invoice - Odoo App</title>
+  <style>
+   * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      line-height: 1.7;
+      color: #0f172a;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      color: #fff;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .hero-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      background: radial-gradient(circle at top left, #a7f3d0, #10b981);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .hero-icon:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.5);
+    }
+
+    .hero-icon svg {
+      width: 60px;
+      height: 60px;
+      fill: #ffffff;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 10px 0;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #e0f2f1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Main Content */
+    .content {
+      max-width: 950px;
+      margin: -60px auto 80px;
+      background: #fff;
+      padding: 40px 24px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 40px;
+      background: linear-gradient(135deg, #10b981, #065f46);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    p, li {
+      font-size: 18px;
+      color: #1f2937;
+    }
+
+    ul { padding-left: 22px; }
+
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #6ee7b7, #10b981);
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    #backToTop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #backToTop:hover {
+      box-shadow: 0 6px 16px rgba(16,185,129,0.5);
+      transform: translateY(-2px);
+    }
+
+          /* Screenshot Grid */
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .screenshot img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .screenshot img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .screenshot p {
+      text-align: center;
+      font-size: 16px;
+      color: #065f46;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <section class="hero">
+<!--    <div class="hero-icon">-->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 8V7a2 2 0 0 0-2-2h-3V3a1 1 0 0 0-2 0v2H9V3a1 1 0 0 0-2 0v2H4a2 2 0 0 0-2 2v1h19zM3 9v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3zm5 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1z"/></svg>-->
+<!--    </div>-->
+    <h1>Medical Invoice</h1>
+    <p>A lightweight Odoo module to generate and manage medical invoices, compatible with Odoo 16</p>
+  </section>
+
+  <section class="content">
+    <h2>Short Description</h2>
+    <p>Medical Invoice extends Odoo's invoicing with features tailored for clinics and hospitals — itemized treatment codes, patient-facing invoice PDFs, insurance reference fields, and configurable templates for receipts.</p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li>Generate patient invoices from medical services and prescriptions.</li>
+      <li>Attach patient and insurance details to invoices.</li>
+      <li>Custom invoice templates for printable PDFs.</li>
+      <li>Support for tax and discount rules used by clinics.</li>
+      <li>Integration hooks for billing and accounting workflows.</li>
+      <li>CSV import/export for bulk billing.</li>
+    </ul>
+
+    <h2>Compatibility</h2>
+    <p>Tested with Odoo <strong>16.0</strong>Works with Community </p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li>Upload the ZIP to Odoo Apps or place the module folder in your addons path.</li>
+      <li>Update the Apps list and install <code>medical_invoice</code>.</li>
+      <li>Configure taxes and journal settings under Invoicing → Configuration.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>After installation, go to <strong>Invoicing → Medical Invoices</strong> to create a new patient invoice.</p>
+  </section>
+
+  <div class="section">
+    <h2>Important Note</h2>
+    <ol>
+        <li>The auto-delivery uses the first warehouse found on the database. Ensure you have a warehouse configured (Inventory → Configuration → Warehouses). If you prefer a specific warehouse, I can change the logic to choose by company or a warehouse field on the invoice.</li>
+        <li>The picking confirmation/assignment steps are best-effort; depending on your stock rules, lots, and routes, you may need to adapt the code to auto-validate pickings (I avoided forcing validate() to reduce risk).</li>
+        <li>The import wizard CSV parsing is forgiving but expects product barcodes for reliable matching. I added fallback name search and partner creation by name/email if not found.</li>
+        <li>You'll likely want to add tests or run this in a staging DB before deploying to production.</li>
+    </ol>
+  </div>
+
+
+  <h2>Adding Screenshots of Invoice form view,Prescription form view and PDF</h2>
+    <div class="screenshots">
+      <div class="screenshot">
+        <img src="screen1.png" alt="Invoice Form">
+        <p>Invoice Form</p>
+      </div>
+      <div class="screenshot">
+        <img src="screen2.png" alt="Prescription Form">
+        <p>Prescription Form</p>
+      </div>
+      <div class="screenshot">
+        <img src="screen3.png" alt="PDF Template">
+        <p>PDF Template</p>
+      </div>
+    </div>
+
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">About</h2>
+        <p>
+          Developed by <b>Agastya Tech Solutions</b><br/>
+            <a href="mailto:youremail@example.com">agastyatechsolutions@gmail.com</a><br/>
+        </p>
+    </div>
+
+  <button id="backToTop">Back to Top</button>
+
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

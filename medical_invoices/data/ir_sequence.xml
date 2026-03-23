@@ -1,0 +1,16 @@
+<odoo>
+  <record id="seq_medical_invoice" model="ir.sequence">
+    <field name="name">Medical Invoice</field>
+    <field name="code">medical.invoice</field>
+    <field name="prefix">MI</field>
+    <field name="padding">4</field>
+    <field name="number_next">1</field>
+  </record>
+  <record id="seq_hospital_prescription" model="ir.sequence">
+    <field name="name">Hospital Prescription</field>
+    <field name="code">hospital.prescription</field>
+    <field name="prefix">RX</field>
+    <field name="padding">4</field>
+    <field name="number_next">1</field>
+  </record>
+</odoo>

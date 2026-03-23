@@ -1,0 +1,27 @@
+<odoo>
+    <record id="action_medical_invoice_tree" model="ir.actions.act_window">
+        <field name="name">Medical Invoices</field>
+        <field name="res_model">medical.invoice</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_hospital_prescription_tree" model="ir.actions.act_window">
+        <field name="name">Prescriptions</field>
+        <field name="res_model">hospital.prescription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_prescription_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import Prescriptions</field>
+        <field name="res_model">medical.prescription.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_medical_root" name="Medical" sequence="10"/>
+    <menuitem id="menu_medical_billing" name="Billing" parent="menu_medical_root" sequence="10"/>
+    <menuitem id="menu_medical_invoices" name="Medical Invoices" parent="menu_medical_billing" action="medical_invoice.action_medical_invoice_tree" sequence="10"/>
+    <menuitem id="menu_medical_prescriptions" name="Prescriptions" parent="menu_medical_root" action="medical_invoice.action_hospital_prescription_tree" sequence="20"/>
+    <menuitem id="menu_medical_tools" name="Tools" parent="menu_medical_root" sequence="30"/>
+    <menuitem id="menu_medical_imports" name="Imports" parent="menu_medical_tools" action="medical_invoice.action_prescription_import_wizard" sequence="10"/>
+</odoo>

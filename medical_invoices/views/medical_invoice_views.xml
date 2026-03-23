@@ -1,0 +1,144 @@
+<odoo>
+    <record id="view_medical_invoice_tree" model="ir.ui.view">
+        <field name="name">medical.invoice.tree</field>
+        <field name="model">medical.invoice</field>
+        <field name="arch" type="xml">
+            <tree string="Medical Invoices">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="date"/>
+                <field name="amount_total"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_medical_invoice_form" model="ir.ui.view">
+    <field name="name">medical.invoice.form</field>
+    <field name="model">medical.invoice</field>
+    <field name="arch" type="xml">
+        <form string="Medical Invoice">
+            <header>
+                <button name="action_import_prescription_lines"
+                        type="object"
+                        string="Import from Prescription"
+                        class="btn-secondary"/>
+
+                <button name="action_confirm"
+                        type="object"
+                        string="Confirm and Deliver"
+                        class="btn-primary"/>
+
+                <button name="action_create_account_invoice"
+                        type="object"
+                        string="Create Account Invoice"
+                        class="btn-success"/>
+
+                <button name="%(action_report_medical_invoice)d"
+                        type="action"
+                        string="Print"
+                        class="btn-info"
+                        icon="fa-print"/>
+
+                <field name="state"
+                       widget="statusbar"
+                       statusbar_visible="draft,confirmed,delivered,invoiced"/>
+            </header>
+
+            <sheet>
+                <group>
+                    <group col="2">
+                        <field name="name"/>
+                        <field name="patient_id"/>
+                    </group>
+                    <group col="2">
+                        <field name="prescription_id"/>
+                        <field name="gstin_no"/>
+                    </group>
+                    <group col="3">
+                        <field name="state_code"/>
+                        <field name="signature"/>
+                        <field name="stamp"/>
+                    </group>
+                    <group col="2">
+                        <field name="note"/>
+                         <field name="date"/>
+                    </group>
+                </group>
+
+                <group>
+                    <field name="line_ids" context="{}" colspan="4">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <field name="barcode"/>
+                            <field name="qty"/>
+                            <field name="price_unit"/>
+                            <field name="tax_ids"/>
+                            <field name="subtotal"/>
+                        </tree>
+                    </field>
+                </group>
+
+                <footer>
+                    <div class="o_row">
+                        <div class="o_col_6">
+                            Untaxed: <field name="amount_untaxed" readonly="1"/>
+                        </div>
+                        <div class="o_col_6">
+                            Tax: <field name="tax_amount" readonly="1"/>
+                        </div>
+                    </div>
+                    <div>Total: <field name="amount_total" readonly="1"/></div>
+                </footer>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+
+
+
+<!--    <record id="view_medical_invoice_form" model="ir.ui.view">-->
+<!--        <field name="name">medical.invoice.form</field>-->
+<!--        <field name="model">medical.invoice</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form string="Medical Invoice">-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <field name="name"/>-->
+<!--                        <field name="patient_id"/>-->
+<!--                        <field name="prescription_id"/>-->
+<!--                        <field name="date"/>-->
+<!--                        <field name="state"/>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        <field name="line_ids" context="{}" colspan="4">-->
+<!--                            <tree editable="bottom">-->
+<!--                                <field name="product_id"/>-->
+<!--                                <field name="barcode"/>-->
+<!--                                <field name="qty"/>-->
+<!--                                <field name="price_unit"/>-->
+<!--                                <field name="tax_ids"/>-->
+<!--                                <field name="subtotal"/>-->
+<!--                            </tree>-->
+<!--                        </field>-->
+<!--                    </group>-->
+<!--                    <footer>-->
+<!--                        <div class="o_row">-->
+<!--                            <div class="o_col_6">Untaxed: <field name="amount_untaxed"/></div>-->
+<!--                            <div class="o_col_6">Tax: <field name="tax_amount"/></div>-->
+<!--                        </div>-->
+<!--                        <div>Total: <field name="amount_total"/></div>-->
+<!--                    </footer>-->
+<!--                </sheet>-->
+<!--                <div class="oe_button_box" name="button_box">-->
+<!--                    <button string="Import from Prescription" type="object" name="action_import_prescription_lines" class="btn-secondary"/>-->
+<!--                    <button string="Confirm and Deliver" type="object" name="action_confirm" class="btn-primary"/>-->
+<!--                    <button string="Create Account Invoice" type="object" name="action_create_account_invoice"/>-->
+<!--                    <button string="Print" type="action" name="%(action_report_medical_invoice)d"/>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+</odoo>

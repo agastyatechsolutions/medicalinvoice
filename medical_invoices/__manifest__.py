@@ -1,0 +1,23 @@
+{
+    'name': 'Medical Invoice',
+    'version': '16.0.3.0.0',
+    'summary': 'Medical invoices from prescriptions — precise tax calc, prescription import wizard, auto-delivery',
+    'description': 'Medical Invoice module with full Odoo tax computation, bulk prescription import wizard, and automatic stock picking on confirm.',
+    'author': 'Agastya Tech Solutions',
+    'category': 'Healthcare',
+    'depends': ['base','product','stock','account'],
+    'data': [
+        'data/ir_sequence.xml',
+        'security/ir.model.access.csv',
+        'views/menu_views.xml',
+        'views/medical_invoice_views.xml',
+        'views/prescription_views.xml',
+        'views/import_wizard_views.xml',
+        'report/medical_invoice_report.xml',
+        'report/medical_invoice_report_template.xml',
+    ],
+    'images': ['static/description/agastya_tech_solutions.gif'],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

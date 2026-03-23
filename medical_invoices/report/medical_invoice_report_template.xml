@@ -1,0 +1,127 @@
+<odoo>
+    <template id="report_medical_invoice_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout_standard">
+                    <t t-set="company" t-value="doc.company_id"/>
+                    <main class="o_report_layout_standard">
+                        <div class="page">
+                            <!-- ================= HEADER ================= -->
+                            <div class="text-center mb-3">
+                                <h4 style="border-bottom:1px solid #000; padding:4px;">
+                                    Bill of Supply
+                                </h4>
+                            </div>
+                            <!-- ================= PATIENT INFO ================= -->
+                            <div class="row mb-3" style="font-size:13px;">
+                                <div class="col-6">
+                                    <h3><t t-esc="doc.company_id.name"/></h3>
+                                    <t t-esc="doc.company_id.street or ''"/>,
+                                    <t t-esc="doc.company_id.city or ''"/> -
+                                    <t t-esc="doc.company_id.zip or ''"/><br/>
+                                    Phone: <t t-esc="doc.company_id.phone or ''"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Patient:</strong> <t t-esc="doc.patient_id.name"/><br/>
+                                    <strong>Address:</strong> <t t-esc="doc.patient_id.street or ''"/><br/>
+                                    <strong>Doctor:</strong> <t t-esc="doc.doctor_id.name"/><br/>
+                                    <strong>Address:</strong> <t t-esc="doc.doctor_id.street or ''"/>
+                                </div>
+                            </div>
+
+                            <div style="border-top:1px solid #ccc; padding-top:4px; font-size:15px;">
+                                <p><strong style="padding-left:64px;">DATE:</strong><span style="display:inline-block; width:200px;" t-esc="doc.date"/>
+                                <strong>Memo No.</strong><span t-field="doc.memo_no"/></p>
+                            </div>
+                            <!-- ================= MEDICINE TABLE ================= -->
+                            <table class="table table-sm table-bordered" style="font-size:13px;">
+                                <thead>
+                                    <tr>
+                                        <th>Qty</th>
+                                        <th>Description</th>
+                                        <th>Company</th>
+                                        <th>Batch</th>
+                                        <th>Exp</th>
+                                        <th>Qty</th>
+                                        <th>M.R.P</th>
+                                        <th class="text-end">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.line_ids" t-as="line">
+                                        <tr>
+                                            <td><t t-esc="line.qty"/></td>
+                                            <td><t t-esc="line.product_id.display_name"/></td>
+                                            <td><t t-esc="line.company_name or ''"/></td>
+                                            <td><t t-esc="line.batch_no or ''"/></td>
+                                            <td><t t-esc="line.expiry_date or ''"/></td>
+                                            <td><t t-esc="line.qty or ''"/></td>
+                                            <td><t t-esc="line.price_unit or ''"/></td>
+                                            <td class="text-end">
+                                                <t t-esc="line.subtotal or ''"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+
+                            <!-- ================= TOTALS ================= -->
+<!--                            <div class="row mt-3">-->
+<!--                                <div class="col-6"></div>-->
+<!--                                <div class="col-6 text-end" style="font-size:14px;">-->
+<!--                                    <strong>Untaxed Amount:</strong><t t-esc="doc.amount_untaxed"/><br/>-->
+<!--                                    <strong>Tax:</strong><t t-esc="doc.tax_amount"/><br/>-->
+<!--                                    <strong>Total:</strong><t t-esc="doc.amount_total"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <!-- ================= FOOTER ================= -->
+                            <table class="table table-sm table-bordered" style="font-size:13px;padding-top:5px;">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <t t-esc=""/>
+                                            <p><t t-esc="doc.gstin_no"/><t t-esc="doc.state_code"/></p>
+                                            <p><t t-esc="doc.note"/></p>
+                                        </td>
+                                        <td>
+<!--                                            <t t-esc="doc.comapany_id.name"/></td>-->
+                                            <!-- Stamp (brighter, behind) -->
+                                            <img t-att-src="image_data_uri(doc.stamp)"
+                                                 style="width:150px; opacity:0.9; position:absolute;" />
+
+                                            <!-- Signature (on top, slightly transparent) -->
+                                            <img t-att-src="image_data_uri(doc.signature)"
+                                                 style="width:150px; opacity:0.7; position:absolute;" />
+                                        </td>
+                                        <td>
+                                            <strong>GROSS:</strong><t t-esc="doc.amount_untaxed"/><br/>
+                                            <strong>TAX:</strong><t t-esc="doc.tax_amount"/><br/>
+                                            <strong>NET:</strong><t t-esc="doc.amount_total"/><br/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+<!--                            <div class="row mt-5" style="font-size:12px;">-->
+<!--                                <div class="col-6">-->
+<!--                                    <p>Received By: _____________________</p>-->
+<!--                                </div>-->
+<!--                                <div class="col-6 text-end">-->
+<!--                                    <p>For <t t-esc="doc.company_id.name"/></p>-->
+<!--                                    <p><strong>Authorized Signature</strong></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                    </main>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
