@@ -93,11 +93,11 @@
                                         <td>
 <!--                                            <t t-esc="doc.comapany_id.name"/></td>-->
                                             <!-- Stamp (brighter, behind) -->
-                                            <img t-att-src="image_data_uri(doc.stamp)"
+                                            <img t-if="doc.stamp" t-att-src="image_data_uri(doc.stamp)"
                                                  style="width:150px; opacity:0.9; position:absolute;" />
 
                                             <!-- Signature (on top, slightly transparent) -->
-                                            <img t-att-src="image_data_uri(doc.signature)"
+                                            <img t-if="doc.signature" t-att-src="image_data_uri(doc.signature)"
                                                  style="width:150px; opacity:0.7; position:absolute;" />
                                         </td>
                                         <td>

@@ -4,8 +4,8 @@
     model="medical.invoice"
     string="Medical Invoice"
     report_type="qweb-pdf"
-    name="medical_invoice.report_medical_invoice_document"
-    file="medical_invoice.report_medical_invoice_document"
+    name="medical_invoices.report_medical_invoice_document"
+    file="medical_invoices.report_medical_invoice_document"
     attachment_use="False"
   />
 </odoo>

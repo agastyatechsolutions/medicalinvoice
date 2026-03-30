@@ -40,7 +40,7 @@ class MedicalInvoice(models.Model):
     _name = 'medical.invoice'
     _description = 'Medical Invoice'
 
-    memo_no = fields.Char('Memo No.', required=True)
+    memo_no = fields.Char('Memo No.', required=True,default='New')
     name = fields.Char('Invoice Reference', required=True, copy=False, default=lambda self: _('New'))
     patient_id = fields.Many2one('res.partner', string='Patient', domain=[('is_company','=',False)])
     doctor_id = fields.Many2one('res.partner', string='Doctor', domain=[('is_company','=',False)])
